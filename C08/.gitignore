@@ -1,0 +1,6 @@
+**/a.out
+**/main.c
+**/*.gch
+
+ex04/*
+!ex04/ft_strs_to_tab.c
