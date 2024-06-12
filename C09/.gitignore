@@ -1,0 +1,7 @@
+**/*.a
+**/*.o
+**/a.out
+**/main.c
+
+ex01/*
+!ex01/Makefile
