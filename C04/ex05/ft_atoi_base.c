@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// la base est "0123456789"
-// Donc '    --ABCDEF0988AHK' avec la base alphabetique majuscule ("ABCDEFGHIJKLMNOPQRSTUVWXYZ") va donner ABCDEF
-
 int	ft_is_white_space(char str)
 {
 	if (str == '\t' || str == '\n' || str == '\v' || str == '\f'
