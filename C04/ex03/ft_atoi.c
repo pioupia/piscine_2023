@@ -6,10 +6,11 @@
 /*   By: pioupia <pioupia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:26:56 by pioupia           #+#    #+#             */
-/*   Updated: 2024/06/12 11:04:37 by pioupia          ###   ########.fr       */
+/*   Updated: 2024/06/13 13:28:01 by pioupia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int ft_is_white_space(char str)
 {
 	if (str == '\t' || str == '\n' || str == '\v' || str == '\f'
 		|| str == '\r' || str == ' ')
