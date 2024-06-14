@@ -1,49 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_remove_if.c                                :+:      :+:    :+:   */
+/*   ft_list_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pioupia <pioupia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:42:59 by pioupia           #+#    #+#             */
-/*   Updated: 2024/06/14 15:08:14 by pioupia          ###   ########.fr       */
+/*   Updated: 2024/06/14 17:06:33 by pioupia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdlib.h>
 
-void	ft_remove_el(t_list *element, void (*free_fct)(void *))
+
+void ft_list_sort(t_list **begin_list, int (*cmp)())
 {
 	t_list	*tmp;
+	t_list	*tmp2;
+	t_list	*min;
+	void	*tmp_data;
 
-	tmp = element->next->next;
-	if (free_fct)
-		free_fct(element->next->data);
-	free(element->next);
-	element->next = tmp;
-}
-
-void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *))
-{
-	t_list	*tmp;
-
-	if (!begin_list || !*begin_list)
+	if (!begin_list || !*begin_list || !(*begin_list)->next ||
+		!cmp)
 		return ;
 	tmp = *begin_list;
 	while (tmp->next)
 	{
-		if (cmp(tmp->next->data, data_ref) == 0)
-			ft_remove_el(tmp, free_fct);
-		else
-			tmp = tmp->next;
-	}
-	if (cmp((*begin_list)->data, data_ref) == 0)
-	{
-		tmp = *begin_list;
-		*begin_list = (*begin_list)->next;
-		if (free_fct)
-			free_fct(tmp->data);
-		free(tmp);
+		tmp2 = tmp->next;
+		min = tmp;
+		while(tmp2)
+		{
+			if (cmp(tmp2->data, min->data) < 0)
+				min = tmp2;
+			tmp2 = tmp2->next;
+		}
+		tmp_data = tmp->data;
+		tmp->data = min->data;
+		min->data = tmp_data;
+		tmp = tmp->next;
 	}
 }
