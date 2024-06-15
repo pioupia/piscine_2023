@@ -6,7 +6,7 @@
 /*   By: pioupia <pioupia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:42:59 by pioupia           #+#    #+#             */
-/*   Updated: 2024/06/14 15:08:14 by pioupia          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:11:47 by pioupia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (
 {
 	t_list	*tmp;
 
-	if (!begin_list || !*begin_list)
+	if (!begin_list || !*begin_list || !cmp)
 		return ;
 	tmp = *begin_list;
 	while (tmp->next)
